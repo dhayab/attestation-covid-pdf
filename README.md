@@ -1,30 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# attestation-covid-pdf
 
-## Getting Started
+## Motivation
 
-First, run the development server:
+Les attestations fournies par l'outil officiel sont actuellement générées côté client (par le navigateur), ce qui n'est pas idéal pour les intégrer dans des workflows d'automatisation. Ce projet, se basant sur le code original, permet de faire une génération côté serveur et retourne directement le fichier PDF correctement rempli.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Utilisation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> https://<projet>.vercel.app/api/certificat.pdf
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+| Paramètre d'URL                        | Format     | Description                                                  |
+| -------------------------------------- | ---------- | ------------------------------------------------------------ |
+| firstname                              | string     | Prénom                                                       |
+| lastname                               | string     | Nom                                                          |
+| birthday                               | dd/MM/yyyy | Date de naissance                                            |
+| placeofbirth                           | string     | Ville de naissance                                           |
+| address                                | string     | Adresse                                                      |
+| city                                   | string     | Ville                                                        |
+| zipcode                                | string     | Code postal                                                  |
+| reasons<br />(défaut : travail)        | string     | Raison(s) du déplacement :<br />travail, achats, sante, famille, handicap, sport_animaux, convocation, missions, enfants |
+| datesortie<br />(défaut : maintenant)  | dd/MM/yyyy | Date de sortie                                               |
+| heuresortie<br />(défaut : maintenant) | HH:ii      | Heure de sortie                                              |
 
-## Learn More
+## Crédits
 
-To learn more about Next.js, take a look at the following resources:
+Code de génération du PDF issu du [générateur de certificat de déplacement](https://github.com/LAB-MI/attestation-deplacement-derogatoire-q4-2020/) développé par LAB-MI.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

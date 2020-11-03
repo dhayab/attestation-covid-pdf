@@ -1,0 +1,13 @@
+../
+.git/
+| hooks/
+| logs/
+| objects/
+| refs/
+| rr-cache/
+| COMMIT_EDITMSG
+| HEAD
+| ORIG_HEAD
+| config
+| index
+| index.lock
