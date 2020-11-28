@@ -1,6 +1,6 @@
 # attestation-covid-pdf
 
-Le bouton ci-dessous permet de déploiement une instance de cette API en quelques minutes sur Vercel/Now.
+Le bouton ci-dessous permet de déployer une instance de cette API en quelques minutes sur Vercel/Now.
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fdhayab%2Fattestation-covid-pdf)
 

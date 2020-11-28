@@ -1,4 +1,4 @@
-import QRCode from 'qrcode'
+const Blob = require('node-blob'); import QRCode from 'qrcode'
 
 export function generateQR (text) {
   const opts = {
