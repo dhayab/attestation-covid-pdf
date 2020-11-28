@@ -1,0 +1,19 @@
+name: Update assets from source
+on:
+  workflow_dispatch: {}
+  schedule:
+  - cron: "0 10 * * *"
+jobs:
+  update-from-source:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Update assets from source
+      run: ./update.sh
+    - name: Create pull request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        branch: source-update
+        delete-branch: true
+        title: "Update assets from source"
+        commit-message: "chore: update assets from source"
