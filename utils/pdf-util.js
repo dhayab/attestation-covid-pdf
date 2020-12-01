@@ -75,9 +75,11 @@ export async function generatePdf (profile, reasons, pdfBase) {
   drawText(placeofbirth, 214, 684)
   drawText(`${address} ${zipcode} ${city}`, 104, 665)
 
-  reasons.split(', ').forEach((reason) => {
-    drawText('x', 47, ys[reason], 12)
-  })
+  reasons
+    .split(', ')
+    .forEach(reason => {
+      drawText('x', 47, ys[reason], 12)
+    })
 
   let locationSize = getIdealFontSize(font, profile.city, 83, 7, 11)
 
@@ -109,14 +111,7 @@ export async function generatePdf (profile, reasons, pdfBase) {
 
   const qrImage = await pdfDoc.embedPng(generatedQR)
 
-  page1.drawText(`${qrTitle1}\n${qrTitle2}`, {
-    x: 440,
-    y: 130,
-    size: 6,
-    font,
-    lineHeight: 10,
-    color: rgb(1, 1, 1),
-  })
+  page1.drawText(qrTitle1 + '\n' + qrTitle2, { x: 440, y: 130, size: 6, font, lineHeight: 10, color: rgb(1, 1, 1) })
 
   page1.drawImage(qrImage, {
     x: page1.getWidth() - 156,
@@ -127,13 +122,7 @@ export async function generatePdf (profile, reasons, pdfBase) {
 
   pdfDoc.addPage()
   const page2 = pdfDoc.getPages()[1]
-  page2.drawText(qrTitle1 + qrTitle2, {
-    x: 50,
-    y: page2.getHeight() - 70,
-    size: 11,
-    font,
-    color: rgb(1, 1, 1),
-  })
+  page2.drawText(qrTitle1 + qrTitle2, { x: 50, y: page2.getHeight() - 70, size: 11, font, color: rgb(1, 1, 1) })
   page2.drawImage(qrImage, {
     x: 50,
     y: page2.getHeight() - 390,
