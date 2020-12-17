@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 TMP=$(mktemp -d)
-REPOSITORY="https://github.com/LAB-MI/attestation-deplacement-derogatoire-q4-2020/"
+REPOSITORY="https://github.com/LAB-MI/attestation-couvre-feu-covid-19/"
 SCRIPTS=("src/js/pdf-util.js" "src/js/util.js")
 RESOURCES=("src/certificate.pdf")
 

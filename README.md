@@ -21,11 +21,11 @@ Les attestations fournies par l'outil officiel sont actuellement générées cô
 | address                                | string     | Adresse                                                      |
 | city                                   | string     | Ville                                                        |
 | zipcode                                | string     | Code postal                                                  |
-| reasons<br />(défaut : travail)        | string     | Raison(s) du déplacement :<br />travail, achats_culturel_cultuel, sante, famille, handicap, sport_animaux, convocation, missions, enfants |
+| reasons<br />(défaut : travail)        | string     | Raison(s) du déplacement :<br />travail, sante, famille, handicap, convocation, missions, transits, animaux |
 | datesortie<br />(défaut : maintenant)  | dd/MM/yyyy | Date de sortie                                               |
 | heuresortie<br />(défaut : maintenant) | HH:ii      | Heure de sortie                                              |
 
 ## Crédits
 
-Code de génération du PDF issu du [générateur de certificat de déplacement](https://github.com/LAB-MI/attestation-deplacement-derogatoire-q4-2020/) développé par LAB-MI.
+Code de génération du PDF issu du [générateur de certificat de déplacement](https://github.com/LAB-MI/attestation-couvre-feu-covid-19/) développé par LAB-MI.
 
