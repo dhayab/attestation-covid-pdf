@@ -1,15 +1,21 @@
-const Blob = require('node-blob'); import { generateQR } from './util'
+const Blob = require('node-blob')
+
+import { generateQR } from './util'
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib'
 
 const ys = {
-  travail: 540,
-  sante: 507,
-  famille: 461,
-  handicap: 429,
-  convocation: 408,
-  missions: 386,
-  transits: 352,
-  animaux: 319,
+  travail: 579,
+  sante: 546,
+  famille: 512,
+  handicap: 478,
+  judiciaire: 459,
+  missions: 438,
+  transit: 404,
+  animaux: 370,
+  courses: 304,
+  sport: 261,
+  rassemblement: 190,
+  demarche: 145,
 }
 
 export async function generatePdf (profile, reasons, pdfBase) {
@@ -69,15 +75,15 @@ export async function generatePdf (profile, reasons, pdfBase) {
     page1.drawText(text, { x, y, size, font })
   }
 
-  drawText(`${firstname} ${lastname}`, 119, 665)
-  drawText(birthday, 119, 645)
-  drawText(placeofbirth, 312, 645)
-  drawText(`${address} ${zipcode} ${city}`, 133, 625)
+  drawText(`${firstname} ${lastname}`, 144, 705)
+  drawText(birthday, 144, 684)
+  drawText(placeofbirth, 310, 684)
+  drawText(`${address} ${zipcode} ${city}`, 148, 665)
 
   reasons
     .split(', ')
     .forEach(reason => {
-      drawText('x', 73, ys[reason], 12)
+      drawText('x', 72, ys[reason], 12)
     })
 
   let locationSize = getIdealFontSize(font, profile.city, 83, 7, 11)
@@ -90,9 +96,9 @@ export async function generatePdf (profile, reasons, pdfBase) {
     locationSize = 7
   }
 
-  drawText(profile.city, 105, 274, locationSize)
-  drawText(`${profile.datesortie}`, 91, 255, 11)
-  drawText(`${profile.heuresortie}`, 312, 255, 11)
+  drawText(profile.city, 103, 112, locationSize)
+  drawText(`${profile.datesortie}`, 91, 95, 11)
+  drawText(`${profile.heuresortie}`, 310, 95, 11)
 
   // const shortCreationDate = `${creationDate.split('/')[0]}/${
   //   creationDate.split('/')[1]
@@ -110,21 +116,21 @@ export async function generatePdf (profile, reasons, pdfBase) {
 
   const qrImage = await pdfDoc.embedPng(generatedQR)
 
-  page1.drawText(qrTitle1 + '\n' + qrTitle2, { x: 440, y: 230, size: 6, font, lineHeight: 10, color: rgb(1, 1, 1) })
+  page1.drawText(qrTitle1 + '\n' + qrTitle2, { x: 440, y: 630, size: 6, font, lineHeight: 10, color: rgb(1, 1, 1) })
 
   page1.drawImage(qrImage, {
-    x: page1.getWidth() - 156,
-    y: 125,
-    width: 92,
-    height: 92,
+    x: page1.getWidth() - 107,
+    y: 660,
+    width: 82,
+    height: 82,
   })
 
   pdfDoc.addPage()
   const page2 = pdfDoc.getPages()[1]
-  page2.drawText(qrTitle1 + qrTitle2, { x: 50, y: page2.getHeight() - 40, size: 11, font, color: rgb(1, 1, 1) })
+  page2.drawText(qrTitle1 + qrTitle2, { x: 50, y: page2.getHeight() - 70, size: 11, font, color: rgb(1, 1, 1) })
   page2.drawImage(qrImage, {
     x: 50,
-    y: page2.getHeight() - 350,
+    y: page2.getHeight() - 390,
     width: 300,
     height: 300,
   })

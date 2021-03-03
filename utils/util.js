@@ -1,4 +1,6 @@
-const Blob = require('node-blob'); import QRCode from 'qrcode'
+const Blob = require('node-blob')
+
+import QRCode from 'qrcode'
 
 export function generateQR (text) {
   const opts = {
@@ -28,8 +30,8 @@ export function addSlash (str) {
     .replace(/\/\//g, '/')
 }
 
-export function addVersion () {
+export function addVersion (version) {
   document.getElementById(
     'version',
-  ).innerHTML = `${new Date().getFullYear()} - ${process.env.VERSION}`
+  ).innerHTML = `${new Date().getFullYear()} - ${version}`
 }
