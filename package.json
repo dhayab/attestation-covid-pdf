@@ -10,7 +10,7 @@
   "dependencies": {
     "date-fns": "2.16.1",
     "gfm.css": "1.1.2",
-    "next": "10.0.0",
+    "next": "12.1.0",
     "next-absolute-url": "1.2.2",
     "node-blob": "0.0.2",
     "pdf-lib": "1.11.2",
